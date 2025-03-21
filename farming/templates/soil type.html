@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        select, #soil-info {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+            font-size: 16px;
+        }
+
+        #soil-info {
+            background-color: #fff;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Soil Type:</h1>
+    <select id="soil-type">
+        <option value="peat">Peat</option>
+        <option value="yellow">Yellow Soil</option>
+        <option value="red">Red Soil</option>
+        <option value="black">Black Soil</option>
+    </select>
+    
+    <div id="soil-info">
+        <!-- Soil information will be displayed here -->
+    </div>
+
+    <script>
+          const soilInfo = {
+            peat: {
+                crops: ["Rice", "Cranberries", "Blueberries","potatoes","sugar beet","celery"," onions", "carrots", "lettuce"],
+                chemicals: ["Organic fertilizers", "Acidic soil amendments"],
+                waterRequirement: "High moisture content",
+                otherFeatures: "High organic matter",
+                articleLink: "hhttps://peatlands.org/peat/peat/"
+            },
+            yellow: {
+                crops: ["Corn", "Sunflowers", "Wheat","pulses","maize", "groundnut", "rice", "fruits like mango, orange, vegetables, potato, and pulses"],
+                chemicals: ["Balanced fertilizers", "pH adjustment if needed"],
+                waterRequirement: "Moderate moisture content",
+                otherFeatures: "Good drainage",
+                articleLink: "https://example.com/yellow-soil-article"
+            },
+            red: {
+                crops: ["Tomatoes", "Chili peppers", "Soybeans", "Wheat","pulses", "tobacco","potato"],
+                chemicals: ["Phosphorus-rich fertilizers", "Lime for pH adjustment"],
+                waterRequirement: " low water holding capacity hence require regular manuring and irrigation",
+                otherFeatures: "Good aeration",
+                articleLink: "https://www.indianetzone.com/24/laterite_soil.htm"
+            },
+            black: {
+                crops: ["cotton", "wheat", "jowar", "linseed", "Virginia tobacco", "castor", "sunflower","millets"],
+                chemicals: ["Organic matter enrichment", "Potash-rich fertilizers"],
+                waterRequirement: "Moderate moisture content",
+                otherFeatures: "High fertility",
+                articleLink: "https://indiaagronet.com/indiaagronet/soil_management/CONTENTS/Management%20of%20black.htm#:~:text=Black%20soil%20in%20India%20is,types%20of%20soil%20in%20India."
+            }
+        };
+
+        const soilTypeSelect = document.getElementById("soil-type");
+        const soilInfoDiv = document.getElementById("soil-info");
+
+        // Function to display soil information when the user selects a soil type
+        soilTypeSelect.addEventListener("change", () => {
+            const selectedSoilType = soilTypeSelect.value;
+            const info = soilInfo[selectedSoilType];
+            if (info) {
+                const html = `
+                    <h2>${selectedSoilType} Soil Information</h2>
+                    <p><strong>Suitable Crops:</strong> ${info.crops.join(", ")}</p>
+                    <p><strong>Recommended Chemicals:</strong> ${info.chemicals.join(", ")}</p>
+                    <p><strong>Water Requirement:</strong> ${info.waterRequirement}</p>
+                    <p><strong>Other Features:</strong> ${info.otherFeatures}</p>
+                    <p><a href="${info.articleLink}" target="_blank">Learn More</a></p>
+                `;
+                soilInfoDiv.innerHTML = html;
+            } else {
+                soilInfoDiv.innerHTML = "<p>No information available for the selected soil type.</p>";
+            }
+        });
+    </script>
+</body>
+</html>

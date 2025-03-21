@@ -1,0 +1,277 @@
+*{
+	margin:0;
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+.navbar{
+	height: 60px;
+	background-color: #a06cd5;
+	color: white;
+	display: flex;
+	align-items: center;
+	
+}
+.navlogo{
+	height :50px;
+	width :200px;
+}
+.logo{
+	background-image: url(../../Downloads/SAMSlogo.png);
+	background-size:cover ;
+	height: 50px;
+	width: 100%;
+	
+}
+.border{
+		border: 2px solid transparent;
+
+}
+.border:hover{
+border: 2px solid white;
+}
+.nav-search{
+	display: flex;
+	width: 620px;
+	height: 40px;
+	background-color:#a06cd5;
+	border-radius:  5px; 
+}
+.src{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 50px;
+	border: none;
+	background-color:rgb(226, 224, 224);
+}
+.src1{
+	text-align: left;
+	width: 100%;
+	border:none;
+	font-size: 1rem;
+	background-color: rgb(255, 255, 255);
+}
+.searchicon{
+	width: 25px;
+	display: flex;
+	align-items: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-size:1.2rem ;
+	background-color: rgb(255, 217, 0);
+}
+.background{
+	background-image: url(../../Downloads/backg.jpg);
+	height: 350px;
+	width: 100%;
+	background-size:cover ;
+	background-position: center;
+}
+.background-msg{
+	background: #E2CFEA;;
+	color:black;
+	font-size: bolder;
+	text-align: center;
+}
+.foot{
+	background-color: black;
+	font-size: 30px;
+}
+.foot a{
+	justify-content: space-evenly;
+	font-size: 30px;
+	padding-right: 30px;
+	font-style: bolder;
+	text-decoration: none;
+	color: rgb(107, 36, 143);
+}
+.foot a:hover{
+	color: rgb(255, 208, 0) !important;
+}
+.foot a:visited{
+	color: rgb(212, 120, 255);
+}
+#signin-form{
+	margin: auto;
+	padding: 20px;
+	border: 2px solid #ccc ;
+	border-radius: 4px;
+	background-color: #E2CFEA;
+}
+#signin-form h1{
+	background-color: #a06cd5;
+	font-style: italic;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900 ;
+	text-align: center;
+	
+
+}
+#submit:hover{
+	border:2px solid rgb(255, 208, 0) ;
+
+}
+#submit{
+	background-color: black;
+	color: rgb(255, 230, 0);
+	border-radius: 4px;
+	cursor: grab;
+
+}
+#signin-form input[type="text"],input[type="password"]{
+	margin: 10px;
+	padding: 10px;
+	border-radius: 4px;
+	border: 2px solid white;
+	
+}
+.signin a{
+	font-size: bolder;
+	color: white;
+	font-size: 1.8rem;
+	text-decoration:none ;
+	display: block;
+	border: 2px solid black;
+
+
+}
+.calculator a{
+	font-size: bolder;
+	color: white;
+	font-size: 1.8rem;
+	text-decoration:none ;
+	display: block;
+	border: 2px solid black;
+
+}
+.calculator2 a{
+	font-size: bolder;
+	color: white;
+	font-size: 1.8rem;
+	text-decoration:none ;
+	display: block;
+	border: 2px solid black;
+
+}
+.calculator3 a{
+	font-size: bolder;
+	color: white;
+	font-size: 1.8rem;
+	text-decoration:none ;
+	display: block;
+	border: 2px solid black;
+
+}
+/* Reset some default styles for better cross-browser consistency */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.crop-data {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#data-display p {
+    margin: 5px 0;
+}
+
+/* Add more styles as needed for your specific design */
+.weather-forecast {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#weather-display p {
+    margin: 5px 0;
+}
+.calculator-form{
+	margin: auto;
+	padding: 20px;
+	border: 2px solid #ccc ;
+	border-radius: 4px;
+	background-color: #E2CFEA;
+}
+.calculator-form h1{
+	background-color: #a06cd5;
+	font-style: italic;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900 ;
+	text-align: center;
+	
+
+}
+/*yeild*/
+.crop-form {
+    background-color: #ccc;
+    border: 1px solid #E2CFEA;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.crop-form h2 {
+	background-color: #a06cd5;
+	font-style: italic;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900 ;
+	text-align: center;
+}
+
+.crop-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.crop-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.crop-form button[type="submit"] {
+    background-color: #ffea00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.crop-form button[type="submit"]:hover {
+    background-color: #ffff00;
+}

@@ -1,0 +1,47 @@
+/* Style for the crop production calculator form */
+.calculator-form {
+    background-color: #ccc;
+    border: 1px solid #E2CFEA;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.calculator-form h2 {
+    background-color: #a06cd5;
+	font-style: italic;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900 ;
+	text-align: center;
+}
+
+.calculator-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.calculator-form input[type="text"],
+.calculator-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.calculator-form button[type="submit"] {
+    background-color: #ffea00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.calculator-form button[type="submit"]:hover {
+    background-color: #ffff00;
+}

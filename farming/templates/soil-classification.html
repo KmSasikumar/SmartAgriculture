@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhur Rai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div>Teachable Machine Image Model</div>
+    <button type="button" onclick="loadImage()">Load Image</button>
+    <input type="file" id="image-input" accept="image/*" style="display:none;">
+    <div id="label-container"></div>
+    <img id="loaded-image" style="display:none;">
+    <button type="button" onclick="predict()">Predict</button>
+    <a href={% url "soil_type" %} target = "_blank">Soil Type</a>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        // the link to your model provided by Teachable Machine export panel
+        const URL = "https://teachablemachine.withgoogle.com/models/W9q-QWle3/";
+
+        let model, labelContainer, maxPredictions;
+
+        // Load the image model
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            // load the model and metadata
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) { // and class labels
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        // Function to load an image from user's local filesystem
+        function loadImage() {
+            const imageInput = document.getElementById("image-input");
+            imageInput.click(); // Trigger the file input click event
+        }
+
+        // Function to handle image selection
+        async function handleImageUpload(event) {
+            const imageInput = document.getElementById("image-input");
+            const loadedImage = document.getElementById("loaded-image");
+
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    // Display the loaded image
+                    loadedImage.src = e.target.result;
+                    loadedImage.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function predict() {
+            const loadedImage = document.getElementById("loaded-image");
+            if (!loadedImage.src || !loadedImage.complete) {
+                return; // Return if the image is not loaded
+            }
+
+            // Predict using the provided image element
+            const prediction = await model.predict(loadedImage);
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+        }
+
+        // Initialize the model when the page loads
+        init();
+
+        // Add an event listener to the file input for image selection
+        const imageInput = document.getElementById("image-input");
+        imageInput.addEventListener("change", handleImageUpload);
+    </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhur Rai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href={%static 'Style.css'%}>
+</head>
+<style>
+  .background{
+    height: 100vh;
+	width: 100%;
+  }
+.h21{
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255) !important; 
+  font-family: 'Times New Roman', Times, serif;
+}
+.box-section{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      background-color: rgb(41, 52, 46);
+      transition:transform 0.5s;
+
+    
+    }
+    .box-section :hover{
+      transform: translateY(-10px);
+    }
+    .abox{
+  display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        transition:transform 0.5s;
+        margin-top: 10px;
+  
+ }
+      .articles{
+        border:2px solid black;
+        height: 350px;
+        width: 25%;
+        background-color: rgb(255, 255, 255);
+        padding: 20px 0px 15px;
+        cursor: pointer;
+        border-radius: 10px;
+        margin-top: 5px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        text-align: center;
+        transform: translateY(-10px);
+      }
+      .article1{
+        background-image: url(..//static/a1.jpg);
+        height: 250px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background-size: cover;
+        text-align: center;
+        align-items: center;
+      
+      }
+      .article2{
+        background-image: url(..//static/a21.jpg);
+        height: 250px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background-size: cover;
+      }
+      .article3{
+        background-image: url(..//static/a31.jpg);
+        height: 250px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        background-size: cover;
+      }
+    .box{
+      border:2px solid black;
+      height: 420px;
+      width: 23%;
+      background-color: rgb(255, 255, 255);
+      padding: 20px 0px 15px;
+      cursor: pointer;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+  
+    
+    .img1{
+      background-image: url(..//static/1.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img2{
+      background-image: url(..//static/2.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img3{
+      background-image: url(..//static/3.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img4{
+      background-image: url(..//static/4.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img5{
+      background-image: url(..//static/5.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img6{
+      background-image: url(..//static/6.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img7{
+      background-image: url(..//static/7.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img8{
+      background-image: url(..//static/8.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img9{
+      background-image: url(..//static/9.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img10{
+      background-image: url(..//static/10.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+      flex-wrap: wrap;
+    }
+    .img11{
+      background-image: url(..//static/11.jpg);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img12{
+      background-image: url(..//static/12.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .img13{
+      background-image: url(..//static/13.png);
+      height: 300px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-size: cover;
+    }
+    .box-content{
+      margin-left: 1rem;
+      margin-right: 1rem;
+	}
+
+</style>
+<body>
+    <header>
+        
+        <nav class="navbar">
+            <div class="navlogo border">
+                <div class="logo">
+
+                </div>
+            </div>
+            <div class="nav-search border">
+                <div class="signin">
+                    <a href={% url "sign" %} target="_blank">Signin</a>
+                </div>
+                <div class="calculator">
+                    <a href={% url "finance" %} target="_blank">Calculator</a>
+                </div>
+                <div class="calculator">
+                    <a href={% url "cropyeild" %} target="_blank">Yield</a>
+                </div>
+                <div class="calculator3">
+                    <a href={% url "production" %} target="_blank">Production</a>
+                </div>
+                <div class="calculator3">
+                    <a href={% url "soil_classification" %} target="_blank">Soil</a>
+                </div>
+                <div class="calculator3">
+                    <a href={% url "signout" %} style = "font-size :30px">Log out</a>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="background" style ={% static "backg.jpg" %}>
+        <div class="background-msg">
+            <p>You are at SAMS.This is Solution To your Problems</p>
+            <a href="https://bhuvan-app1.nrsc.gov.in/" target="_blank">Ministry of Agriculture</a>
+        </div>
+        <div class="abox">
+          <div class="articles">
+            <div class="box-content">
+                <h2>Aeroponic Farming</h2>
+                <div class="article1"></div>
+                <a href="article 1.html" target="_blank">info</a>
+            </div>
+        </div>
+        
+        <div class="articles">
+            <div class="box-content">
+                <h2>Hydroponic Farming</h2>
+                <div class="article2"></div>
+                <a href="article 2.html" target="_blank">info</a>
+            </div>
+        </div>
+        
+        <div class="articles">
+            <div class="box-content">
+                <h2>Aquaponic Farming</h2>
+                <div class="article3"></div>
+                <a href="article 3.html" target="_blank">info</a>
+  
+            </div>
+        </div>
+      </div> <div class="h21"><h2>Government Schemes</h2></div>
+    </div>
+
+    </div>
+    <div class="box-section">
+  
+        <div class="box1 box">
+         <div class="box-content"> <h2>1.MOVCDNER</h2>
+          <div class="img1"></div>
+          <a href="https://movcd.dac.gov.in/" target="_blank">info</a></div>
+        </div>
+        <div class="box2 box">
+          <div class="box-content">
+          <h2>2.MIDH</h2>
+          <div class="img2"></div>
+          <a href="https://midh.gov.in/" target="_blank">info</a>
+        </div>
+      </div>
+        <div class="box3 box">
+          <div class="box-content">
+          <h2>3.PKVY</h2>
+          <div class="img3"></div>
+          <a href="https://darpg.gov.in/" target="_blank">info</a>
+        </div>
+        </div>
+        <div class="box4 box">
+          <div class="box-content">
+          <h2>4.National project of organic farming</h2>
+          <div class="img4"></div>
+          <a href="https://agricoop.gov.in/" target="_blank">info</a>
+        </div>
+        </div>
+        <div class="box5 box">
+          <div class="box-content"> <h2>5.state adopting organic farming</h2>
+           <div class="img5"></div>
+           <a href="https://movcd6dac.gov.in/" target="_blank">info</a>
+          </div>
+         </div>
+         <div class="box6 box">
+           <div class="box-content">
+           <h2>6.National centre of organic farming</h2>
+           <div class="img6"></div>
+           <a href="https://pgsindia-ncof.gov.in/" target="_blank">site</a>
+         </div>
+       </div>
+         <div class="box8 box">
+           <div class="box-content">
+           <h2>7.ICAR contribution in promoting organic farming</h2>
+           <div class="img8"></div>
+           <a href="https://darpg.gov.in/" target="_blank">info</a>
+         </div>
+         </div>
+         <div class="box8 box">
+           <div class="box-content">
+           <h2>8.Promotion of the use of Biofertilizer</h2>
+           <div class="img8"></div>
+           <a href="https://agricoop.gov.in/" target="_blank">info</a>
+         </div>
+         </div>
+         <div class="box9 box">
+          <div class="box-content"> <h2>9.Soil Health Card</h2>
+           <div class="img9"></div>
+           <a href="https://soilhealth.dac.gov.in/" target="_blank">info</a>
+         </div>
+         </div>
+         <!--
+         <div class="box10 box">
+           <div class="box-content">
+           <h2>10.National Agriculture market</h2>
+           <div class="img10"></div>
+           <a href="https://midh.gov.in/" target="_blank">info</a>
+         </div>
+       </div>
+         <div class="box11 box">
+           <div class="box-content">
+           <h2>11.National Mission for sustainable Agriculture</h2>
+           <div class="img11"></div>
+           <a href="https://nmsa.dac.gov.in/" target="_blank">info</a>
+         </div>
+         </div>
+         <div class="box12 box">
+           <div class="box-content">
+           <h2>12.Pradhanmantri fasal Bima yojana</h2>
+           <div class="img12"></div>
+           <a href="https://pmfby.gov.in/" target="_blank">info</a>
+         </div>
+         </div>
+         <div class="box13 box">
+          <div class="box-content">
+          <h2>13.Gramin Bhandaran yojana</h2>
+          <div class="img13"></div>
+          <a href="https://www.nabard.org/" target="_blank">info</a>
+        </div>
+        </div>//-->
+       </div>
+    <footer class="foot">
+        <a href="#">FAQ </a>
+        <a href="#">Contact us</a>
+        <a href="#">Terms and conditions</a>
+        <a href="#">privacy Policy</a>
+        <a href={% url 'article1'%} target = "_blank">article1</a>
+        <a href={% url 'article2'%} target = "_blank">article2</a>
+        <a href={% url 'article3'%} target = "_blank">article3</a>
+    </footer>
+</body>
+</html>

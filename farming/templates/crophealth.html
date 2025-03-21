@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Monitoring System</title>
+    <link rel="stylesheet" href={% static 'Style.css'%}>
+</head>
+<body>
+    <header>
+        <h1>Crop Monitoring System</h1>
+    </header>
+    <main>
+        <section class="crop-data">
+            <h2>Crop Information</h2>
+            <div id="data-display">
+                <!-- Crop data will be displayed here -->
+            </div>
+        </section>
+        <section class="weather-forecast">
+            <h2>Weather Forecast</h2>
+            <div id="weather-display">
+                <!-- Weather forecast data will be displayed here -->
+            </div>
+        </section>
+    </main>
+    <script src="{%static 'web.js'%}"></script>
+</body>
+</html>

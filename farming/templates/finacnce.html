@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator</title>
+    <link rel="stylesheet" href={%static 'Style.css'%}>
+</head>
+<body>
+    <header>
+        <h1>Financial Calculator</h1>
+    </header>
+    <main>
+        <section class="calculator-form">
+            <h1>Loan Calculator</h1>
+            <form id="loan-calculator">
+                {% csrf_token %}
+                <label for="loan-amount">Loan Amount (Rs):</label>
+                <input type="number" id="loan-amount" name = "loan-amount" required>
+                <label for="loan-term">Loan Term (years):</label>
+                <input type="number" id="loan-term" name = "loan-term" required>
+                <label for="annual-interest-rate">Annual Interest Rate (%):</label>
+                <input type="number" id="annual-interest-rate" name = "annual-interest-rate" required>
+                <button type="submit">Calculate</button>
+            </form>
+            <p id="monthly-payment">Monthly Payment: Rs {{amount}}</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Financial Calculator</p>
+    </footer>
+    <script src = {% static "loanCalculator.js" %}></script>
+</body>
+</html>

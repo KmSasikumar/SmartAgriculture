@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<Style>
+    h1{
+        background-color: mediumturquoise; font-style: italic; font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 900 ;
+    }
+    #a123{
+        background-color: blue;
+        color: aliceblue;
+        font-size:100 ;
+
+    }
+</Style>
+<body>
+   <form action="">
+    <h1>Payment</h1>
+    <p>Name:<input type="text" name="Name:" placeholder="name"></p>
+    <fieldset>
+        <legend>Gender</legend>
+    <p>Male<input type="radio" name="gender" value="male">Female<input type="radio" name="gender" value="female"></p> 
+    </fieldset>
+    <P>Address: <textarea name="address" id="address" cols="50" rows="20"></textarea></P>  
+    <p>email : <input type="email" name="email" id="email"></p>
+    <p>pincode : <input type="number" name="pincode" id="pincode"></p> 
+    <h2>Payment</h2>
+    <P>amount : <input type="number" name="amount" id="amount"></P>
+    <p>card type
+        <Select name="card" id="card">
+            <option value="">--Select your card---</option>
+            <option value="visa">Visa</option>
+            <option value="sbi">SBI</option>
+            <option value="Razor">razor paay</option>
+            <option value="master">Mastercard</option>
+
+        </Select>
+    </p> 
+    <p>card no: : <input type="number" name="card no" id="card no" ></p>
+    <p>expire date: <input type="date" name="exp date" id="exp date" ></p>
+    <p>pin : <input type="password" name="pin" id="pin" ></p>
+    <input type="submit" value="Pay now" id="a123">
+    </form>
+</body>
+</html>

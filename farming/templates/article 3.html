@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaponic</title>
+    <style>
+        h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size:3pc ;
+            margin :auto;
+            padding: 10px;
+            background-color: #246200;
+            color: #fff;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Added this for responsiveness */
+        }
+
+        .item {
+            width: calc(50% - 20px); /* Adjusted width to include margin */
+            margin: 10px; /* Added margin for spacing */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My aquaponic Guide</h1>
+    <div class="container">
+        
+        <div class="item">
+            <img src = {% static "a31.jpg" %} alt="Image 1">
+            <h2>What is aquaponic Farming</h2>
+            <p>
+               aquaponics is the technique is similar to hydroponic technique where in the water chamber consist of water and marine life i.e fish is creates an adaptable envirronment where you can cultivate or breed fishes while doing crop harvesting
+            </p>
+            <p><br>
+                you can get higher yeild at faster rate it is indoor farming method Plants grown in well-managed aquaponic systems are living the good life. Since roots are bathed in all the nutrients they need, plants spend more time growing upward and less time and energy growing extensive root systems to search for food. 
+
+                Growth rates vary based on the type of system and quality of care </p>
+        </div>
+        <div class="item">
+            <img src = {% static "a32.jpg" %} alt="Image 2">
+            <h2>objectives</h2>
+            <p>The article presents a discussion on the aquaponics technology, including its working principles and applications in farming as well as the trends and challenges associated with its use in different areas of agriculture. Methods/statistical analysis: In this work, we discuss aquaponics, a combination of two techniques<br>
+             <ol sytle="list-style-type: a;">
+                <li> hydroponic, which means cultivating plants/vegetables without soil, and </li>
+                <li> aquaculture, which means fish farming</li>
+             </ol> </p>
+        </div>
+        <div class="item">
+            <img src = {% static "a33.jpg" %} alt="Image 3">
+            <h2>Why Should You Use it</h2>
+            <p><br> Aquaponics has become a popular technique because of its similarities to natural ecosystem, where the only difference is that it is a controlled system, in which the fish eats and produce ammonia, beneficial bacteria convert ammonia produced by the fish into nutrients, and the plant absorbs the natural fertilizer and the nutrients. In addition, the water carrying the ammonia and nutrients is continuously recirculated through the system. Findings: The present study was conducted to explore and find a better way to apply the aquaponics agriculture system in various agriculture industries. Findings show that this method enhances the benefits and eliminates the many drawbacks that occur in traditional soil-based agriculture. Application/improvement: This agriculture system does not depend on the soil, and no pesticide is required during the farming. This system is suitable for year-round farming and can produce high-quality vegetables at a much higher yield rate. Vegetables grow at a much faster rate using this technique, compared traditional farming techniques. Aquaponics takes place in a closed system and there is no discharge of waste into the stream. This system produces up to 30% more production compared to traditional farming using the same amount of space. This system requires less water compared to traditional farming</p>
+            </p>
+        </div>
+        <!-- Add more items as needed -->
+    </div>
+</body>
+</html>

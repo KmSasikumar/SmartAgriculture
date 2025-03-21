@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crop Yield Calculator</title>
+    <link rel="stylesheet" href={% static 'Style.css' %}>
+    
+</head>
+<body>
+    <header>
+        <h1>Crop Yield Calculator</h1>
+    </header>
+    <main>
+        <section class="crop-form">
+            <h2>Calculate Crop Yield</h2>
+            <form id="crop-yield-calculator" method = "post">
+                {% csrf_token %}
+                <label for="crop-weight">Weight of Crop (kg):</label>
+                <input type="number" id="crop-weight" name = "weight" required>
+                <label for="land-area">Land Area (acres):</label>
+                <input type="number" id="land-area" name = "area" required>
+                <button type="submit">Calculate</button>
+            </form>
+            <p id="yield-result" name = "yield-result">{{ans}}</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Crop Yield Calculator</p>
+    </footer>
+    {% comment %} <script src="{% static 'yeildcalculator.js' %}" ></script> {% endcomment %}
+</body>
+</html>
