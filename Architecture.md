@@ -17,21 +17,35 @@ SAMS is a hybrid web application blending server-side processing (Django) for bu
 ## 3. High-Level Architecture
 
 ```mermaid
-graph TD
-    User[User / Farmer] -->|HTTPS Request| WebServer[Django Web Server]
-    User -->|Upload Image| BrowserML["TensorFlow.js (Browser)"]
-    
-    subgraph "Server Side (Django)"
-        WebServer -->|Auth Check| AuthSystem
-        WebServer -->|Calculate| BizLogic[Business Logic Views]
-        BizLogic -->|Read/Write| DB[(SQLite Database)]
-        BizLogic -->|Render| Templates[Django Templates]
+flowchart TD
+    User["User / Farmer"]
+
+    subgraph ServerSide["Server Side (Django)"]
+        direction TB
+        WebServer["Django Web Server"]
+        AuthSystem
+        BizLogic["Business Logic Views"]
+        DB[("SQLite Database")]
+        Templates["Django Templates"]
+        
+        WebServer -- "Auth Check" --> AuthSystem
+        WebServer -- "Calculate" --> BizLogic
+        BizLogic -- "Read/Write" --> DB
+        BizLogic -- "Render" --> Templates
     end
-    
-    subgraph "Client Side"
-        BrowserML -->|Inference| ModelFiles[Static TF Model Files]
-        BrowserML -->|Result| DOM[Update UI]
+
+    subgraph ClientSide["Client Side"]
+        direction TB
+        BrowserML["TensorFlow.js (Browser)"]
+        ModelFiles["Static TF Model Files"]
+        DOM["Update UI"]
+        
+        BrowserML -- "Inference" --> ModelFiles
+        BrowserML -- "Result" --> DOM
     end
+
+    User -- "HTTPS Request" --> WebServer
+    User -- "Upload Image" --> BrowserML
 
     %% High-contrast link styling
     linkStyle default stroke-width:2px,fill:none,stroke:white,color:white;
