@@ -69,4 +69,12 @@ The application uses a hybrid architecture:
 - **Modular Design**: Separated static educational resources from dynamic user applications for better scalability.
 
 ---
+## 👨‍💻 Author
+
+| Information | Details |
+| :--- | :--- |
+| **Name** | **K. SasiKumar** |
+| **Registration No** | **22BCE11638** |
+| **Email** | Kommamani012@gmail.com |
+
 *Built for the future of Smart Farming.*
