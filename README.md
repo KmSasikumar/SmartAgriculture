@@ -28,7 +28,7 @@ The application uses a hybrid architecture:
 1.  **Server-Side**: Django handles user sessions, database transactions (Yield/Production records), and serves the application views.
 2.  **Client-Side**: The Soil Classification feature runs entirely in the user's browser using a pre-trained TF.js model.
 
-> See [architecture.md](./architecture.md) for detailed diagrams and database schemas.
+> See [architecture.md](./Architecture.md) for detailed diagrams and database schemas.
 
 ## 🔧 Installation & Setup
 
