@@ -19,7 +19,7 @@ SAMS is a hybrid web application blending server-side processing (Django) for bu
 ```mermaid
 graph TD
     User[User / Farmer] -->|HTTPS Request| WebServer[Django Web Server]
-    User -->|Upload Image| BrowserML[TensorFlow.js (Browser)]
+    User -->|Upload Image| BrowserML["TensorFlow.js (Browser)"]
     
     subgraph "Server Side (Django)"
         WebServer -->|Auth Check| AuthSystem
