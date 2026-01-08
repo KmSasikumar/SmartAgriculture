@@ -32,6 +32,9 @@ graph TD
         BrowserML -->|Inference| ModelFiles[Static TF Model Files]
         BrowserML -->|Result| DOM[Update UI]
     end
+
+    %% High-contrast link styling
+    linkStyle default stroke-width:2px,fill:none,stroke:white,color:white;
 ```
 
 ## 4. Database Schema (Entity-Relationship)
