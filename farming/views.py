@@ -159,7 +159,7 @@ def soilType(request):
     return render(request, "soil type.html")
 
 
-@login_required(login_url="/sign")
+@login_required(login_url="sign")
 def signout(request):
     auth.logout(request)
     return redirect("/sign")
