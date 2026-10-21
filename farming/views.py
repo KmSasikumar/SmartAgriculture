@@ -125,11 +125,8 @@ def sign(request):
     if request.method == "POST":
         username = request.POST.get("Username")
         password = request.POST.get("password")
-        print(username, password)
         check = auth.authenticate(username=username, password=password)
-        print(check)
-        if check == None:
-            print("redirect to login")
+        if check is None:
             return redirect("/register")
         else:
             auth.login(request, check)
