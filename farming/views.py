@@ -18,47 +18,56 @@ def checkemail(mail, UserName):
 # Create your views here.
 @login_required(login_url="sign")
 def crop_yield_calculation(request):
-    user = User.objects.get(username=request.user)
-    # user = get_object_or_404(User, username=request.user)
-    print(user)
     context = {"ans": ""}
     if request.method == "POST":
-        weigth = request.POST.get("weight")
-        area = request.POST.get("area")
-        print(weigth, area)
-        result = float(weigth) / float(area)
-        result = round(result, 2)
-        ans = f"{result} kg/acre"
-        context["ans"] = ans
-        final = calculate_yeild.objects.create(
-            username=user, weigth=weigth, area=area, result=result
+        weigth = request.POST.get("weight", "")
+        area = request.POST.get("area", "")
+        try:
+            weigth_val = float(weigth)
+            area_val = float(area)
+            if area_val <= 0:
+                raise ValueError("Land area must be greater than zero.")
+            if weigth_val < 0:
+                raise ValueError("Crop weight cannot be negative.")
+        except (TypeError, ValueError) as exc:
+            context["ans"] = f"Please enter valid numbers. ({exc})"
+            return render(request, "cropyeild.html", context)
+        result = round(weigth_val / area_val, 2)
+        context["ans"] = f"{result} kg/acre"
+        calculate_yeild.objects.create(
+            username=request.user, weigth=weigth_val, area=area_val, result=result
         )
-        final.save()
     return render(request, "cropyeild.html", context)
 
 
 @login_required(login_url="sign")
 def production_calculation(request):
-    context = {"name": "", "production": "", "Revenue": "", "cost": "", "profit": ""}
-    user = User.objects.get(username=request.user)
+    context = {"name": "", "production": "", "Revenue": "", "cost": "", "profit": "", "error": ""}
     if request.method == "POST":
-        crop_name = request.POST.get("crop_name")
-        land_acer = request.POST.get("land_acer")
-        crop_yeild = request.POST.get("crop-yield")
-        user_cost = request.POST.get("user_cost")
-        market_price = request.POST.get("market_price")
-        # print(crop_name, crop_yeild, user_cost, market_price)
-        totalProduction = round(float(land_acer) * float(crop_yeild), 2)
-        totalRevenue = round(float(totalProduction) * float(market_price), 2)
-        totalCost = round(float(land_acer) * float(user_cost), 2)
-        profit = round(float(totalRevenue) - float(totalCost), 2)
+        crop_name = (request.POST.get("crop_name") or "").strip()
+        try:
+            land_acer = float(request.POST.get("land_acer", ""))
+            crop_yeild = float(request.POST.get("crop-yield", ""))
+            user_cost = float(request.POST.get("user_cost", ""))
+            market_price = float(request.POST.get("market_price", ""))
+            if land_acer <= 0 or crop_yeild < 0 or user_cost < 0 or market_price < 0:
+                raise ValueError("Land area must be greater than zero and other values cannot be negative.")
+            if not crop_name:
+                raise ValueError("Crop name is required.")
+        except (TypeError, ValueError) as exc:
+            context["error"] = f"Please enter valid values. ({exc})"
+            return render(request, "production.html", context)
+        totalProduction = round(land_acer * crop_yeild, 2)
+        totalRevenue = round(totalProduction * market_price, 2)
+        totalCost = round(land_acer * user_cost, 2)
+        profit = round(totalRevenue - totalCost, 2)
         context["name"] = crop_name
         context["production"] = totalProduction
         context["Revenue"] = totalRevenue
         context["cost"] = totalCost
         context["profit"] = profit
-        final = crop_productions.objects.create(
-            username=user,
+        crop_productions.objects.create(
+            username=request.user,
             crop_name=crop_name,
             land_acer=land_acer,
             crop_yeild=crop_yeild,
@@ -69,7 +78,6 @@ def production_calculation(request):
             totalCost=totalCost,
             profit=profit,
         )
-        final.save()
     return render(request, "production.html", context)
 
 

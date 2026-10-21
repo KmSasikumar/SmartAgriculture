@@ -28,6 +28,9 @@
                 <input type="number" id="market-price" name = "market_price" required>
                 <button type="submit">Calculate</button>
             </form>
+            {% if error != "" %}
+            <p id="production-error">{{error}}</p>
+            {% endif %}
             {% if name != "" %}
             <p id="production-result">Crop:{{name}} <br>
                 Total Production: {{production}} kg<br>
