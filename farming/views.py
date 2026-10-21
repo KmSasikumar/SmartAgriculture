@@ -7,12 +7,12 @@ from .models import calculate_yeild, crop_productions
 
 
 # functions
-def checkemail(mail, UserName):
-    try:
-        user_name = User.objects.get(username=UserName)
-        return False
-    except:
-        return True
+def username_or_email_taken(username, mail):
+    """True when the username or the email is already registered."""
+    return (
+        User.objects.filter(username=username).exists()
+        or User.objects.filter(email__iexact=mail).exists()
+    )
 
 
 # Create your views here.
@@ -91,18 +91,22 @@ def crop_health(request):
 
 
 def register(request):
-    if "signin" in request.POST:
-        fname = request.POST.get("fname")
-        lname = request.POST.get("lname")
-        username = request.POST.get("username")
-        mail = request.POST.get("mail")
-        password = request.POST.get("password")
-        confirmpassword = request.POST.get("confirmpassword")
+    context = {"error": ""}
+    if request.method == "POST" and "signin" in request.POST:
+        fname = (request.POST.get("fname") or "").strip()
+        lname = (request.POST.get("lname") or "").strip()
+        username = (request.POST.get("username") or "").strip()
+        mail = (request.POST.get("mail") or "").strip()
+        password = request.POST.get("password") or ""
+        confirmpassword = request.POST.get("confirmpassword") or ""
 
-        if password != confirmpassword:
-            print("Password not matched")
-
-        elif checkemail(mail, username):
+        if not all([fname, lname, username, mail, password, confirmpassword]):
+            context["error"] = "All fields are required."
+        elif password != confirmpassword:
+            context["error"] = "Passwords do not match."
+        elif username_or_email_taken(username, mail):
+            context["error"] = "That username or email is already registered."
+        else:
             user = User.objects.create_user(
                 username=username,
                 email=mail,
@@ -110,12 +114,11 @@ def register(request):
                 first_name=fname.capitalize(),
                 last_name=lname.capitalize(),
             )
-            user.save()
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
             return redirect("/")
 
-    return render(request, "register.html")
+    return render(request, "register.html", context)
 
 
 def sign(request):

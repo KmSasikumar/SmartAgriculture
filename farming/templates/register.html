@@ -10,6 +10,7 @@
     <form class = "border py-2 px-2 rounded border-dark" style="max-width:50%; margin-top:3rem ;margin-left:26%" method="post" action="">
         {% csrf_token %}
         <p class="h1 text-center"><u>Smart Agriculture main</u></p>
+        {% if error %}<p class="alert alert-danger text-center" role="alert">{{ error }}</p>{% endif %}
         {% comment %} <p class="h6 text-center">(login Here)</p> {% endcomment %}
         <div class="row">
             <div class="col-6">
