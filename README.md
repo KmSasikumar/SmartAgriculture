@@ -39,15 +39,17 @@ The application uses a hybrid architecture:
 ### Steps
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/your-username/smart-agriculture-management options
-    cd "SmartAgriculture"
+    git clone https://github.com/KmSasikumar/SmartAgriculture.git
+    cd SmartAgriculture
     ```
 
 2.  **Install Dependencies**
-    *(If no requirements file is present, install the core packages)*
     ```bash
-    pip install django
+    pip install -r requirements.txt
     ```
+    For a deployed instance, set `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`
+    and `DJANGO_ALLOWED_HOSTS` in the environment (see
+    `smart_agriculture/settings.py`).
 
 3.  **Run Migrations**
     Initialize the database:
