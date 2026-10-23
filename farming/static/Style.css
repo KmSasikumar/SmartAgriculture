@@ -310,4 +310,79 @@ h2 {
 	background-color: #ffff00;
 }
 /*boxes*/
-   
+   /* Mobile responsiveness — phone widths (owner mobile pass, 2026-10-23) */
+img {
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 0.5rem;
+        row-gap: 0.5rem;
+    }
+
+    .navlogo {
+        width: 100%;
+    }
+
+    .logo {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left center;
+    }
+
+    .nav-search {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 40px;
+        flex-wrap: wrap;
+    }
+
+    .calculator a,
+    .calculator2 a,
+    .calculator3 a {
+        display: inline-block;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+    }
+
+    .foot a {
+        display: inline-block;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+    }
+
+    .box-content a {
+        display: inline-block;
+        padding: 0.85rem 0.2rem;
+    }
+
+    .background-msg a {
+        display: inline-block;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+    }
+
+    #signin-form input {
+        width: 100%;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    .signin a {
+        min-height: 44px;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        box-sizing: border-box;
+    }
+
+    #signin-form button,
+    #signin-form a.btn {
+        display: inline-block;
+        min-height: 44px;
+        padding: 0.55rem 1.25rem;
+    }
+}
