@@ -300,3 +300,52 @@ button:not([class]):hover {
         padding: 1.25rem;
     }
 }
+/* ---- Mobile navigation: one link per row (owner phone check 2026-10-26).
+   The old wrapped-row layout packed the six links edge to edge with zero
+   spacing, so on a real phone's font metrics they collided and "Log out"
+   wrapped alone onto a second row. A stacked list cannot collide at any
+   font scale, and every row is a full-width tap target. */
+@media (max-width: 640px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-search {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        box-sizing: border-box;
+    }
+
+    .nav-search > div {
+        width: 100%;
+    }
+
+    .nav-search a,
+    .signin a,
+    .calculator a,
+    .calculator2 a,
+    .calculator3 a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.7rem 1rem;
+        font-size: 1.05rem!important;
+        text-align: left;
+        border-radius: 12px;
+    }
+}
+
+/* Soft tint while a card photo is still loading on a slow connection,
+   so the card never looks like a blank white hole. */
+.img1,
+.img2,
+.img3,
+.article1,
+.article2,
+.article3 {
+    background-color: #e9e2f7;
+}
