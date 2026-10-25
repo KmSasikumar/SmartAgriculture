@@ -4,28 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Monitoring System</title>
-    <link rel="stylesheet" href={% static 'Style.css'%}>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
+    <title>Crop Monitoring System | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Crop Monitoring System</h1>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
     </header>
-    <main>
-        <section class="crop-data">
-            <h2>Crop Information</h2>
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Crop Information</h1>
             <div id="data-display">
                 <!-- Crop data will be displayed here -->
             </div>
-        </section>
-        <section class="weather-forecast">
-            <h2>Weather Forecast</h2>
+        </div>
+        <div class="form-card" style="margin-top: 1rem;">
+            <h1>Weather Forecast</h1>
             <div id="weather-display">
                 <!-- Weather forecast data will be displayed here -->
             </div>
-        </section>
+        </div>
     </main>
-    <script src="{%static 'web.js'%}"></script>
+    <script src="{% static 'web.js' %}"></script>
 </body>
 </html>
