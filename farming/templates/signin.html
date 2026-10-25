@@ -25,6 +25,8 @@
     <main class="page">
         <div class="form-card">
             <h1>Sign in</h1>
+            {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+            <p class="result">Demo login &mdash; Username: <strong>demo</strong>, Password: <strong>demo1234</strong></p>
             <form method="post" id="signin-form">
                 {% csrf_token %}
                 <label for="username">Username</label>
