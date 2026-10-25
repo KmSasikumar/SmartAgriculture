@@ -4,61 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soil Information</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        
-        h1 {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        select, #soil-info {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 400px;
-            font-size: 16px;
-        }
-
-        #soil-info {
-            background-color: #fff;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
+    <title>Soil Information | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <h1>Select Soil Type:</h1>
-    <select id="soil-type">
-        <option value="peat">Peat</option>
-        <option value="yellow">Yellow Soil</option>
-        <option value="red">Red Soil</option>
-        <option value="black">Black Soil</option>
-    </select>
-    
-    <div id="soil-info">
-        <!-- Soil information will be displayed here -->
-    </div>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Select Soil Type</h1>
+            <label for="soil-type">Soil type</label>
+            <select id="soil-type">
+                <option value="peat">Peat</option>
+                <option value="yellow">Yellow Soil</option>
+                <option value="red">Red Soil</option>
+                <option value="black">Black Soil</option>
+            </select>
+            <div id="soil-info">
+                <!-- Soil information will be displayed here -->
+            </div>
+        </div>
+    </main>
 
     <script>
           const soilInfo = {
@@ -67,7 +49,7 @@
                 chemicals: ["Organic fertilizers", "Acidic soil amendments"],
                 waterRequirement: "High moisture content",
                 otherFeatures: "High organic matter",
-                articleLink: "hhttps://peatlands.org/peat/peat/"
+                articleLink: "https://peatlands.org/peat/peat/"
             },
             yellow: {
                 crops: ["Corn", "Sunflowers", "Wheat","pulses","maize", "groundnut", "rice", "fruits like mango, orange, vegetables, potato, and pulses"],
