@@ -123,21 +123,19 @@ def register(request):
 
 def sign(request):
     context = {"error": ""}
-if request.method == "POST":
+    if request.method == "POST":
         username = request.POST.get("Username")
-            password = request.POST.get("password")
+        password = request.POST.get("password")
         check = auth.authenticate(username=username, password=password)
-    if check is None:
-                # Stay on the sign-in page with a plain error instead of silently
+        if check is None:
+            # Stay on the sign-in page with a plain error instead of silently
             # bouncing the user to the register page.
             context["error"] = "Invalid username or password. Please try again, or use the demo login below."
-    else:
+        else:
             auth.login(request, check)
-                return redirect("/")
+            return redirect("/")
 
     return render(request, "signin.html", context)
-
-    
 
 
 def home(request):
