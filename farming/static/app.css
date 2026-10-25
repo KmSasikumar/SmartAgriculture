@@ -444,3 +444,10 @@ img {
     padding: 1.25rem;
     margin-top: 1rem;
 }
+
+.nav-user {
+   display: block;
+   color: #c8e6c9;
+   font-weight: 600;
+   padding: 0.7rem 1rem;
+}
