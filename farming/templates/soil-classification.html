@@ -4,43 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madhur Rai</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-        /* Mobile responsiveness (owner mobile pass, 2026-10-23) */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        button {
-            min-height: 44px;
-            padding: 0.6rem 1.2rem;
-            font-size: 1rem;
-            margin: 0.25rem;
-        }
-
-        a {
-            display: inline-block;
-            padding: 0.85rem 0.2rem;
-        }
-
-        @media (max-width: 640px) {
-            body {
-                margin: 12px;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
+    <title>Soil Classification | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <div>Teachable Machine Image Model</div>
-    <button type="button" onclick="loadImage()">Load Image</button>
-    <input type="file" id="image-input" accept="image/*" style="display:none;">
-    <div id="label-container"></div>
-    <img id="loaded-image" style="display:none;">
-    <button type="button" onclick="predict()">Predict</button>
-    <a href={% url "soil_type" %} target = "_blank">Soil Type</a>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Teachable Machine Image Model</h1>
+            <p>Upload a soil photo and the model will classify it.</p>
+            <div class="btn-row">
+                <button type="button" class="btn" onclick="loadImage()">Load Image</button>
+                <button type="button" class="btn btn-secondary" onclick="predict()">Predict</button>
+                <a class="btn btn-secondary" href="{% url 'soil_type' %}">Soil Type</a>
+            </div>
+            <input type="file" id="image-input" accept="image/*" style="display:none;">
+            <div id="label-container"></div>
+            <img id="loaded-image" style="display:none;" alt="Uploaded soil photo">
+        </div>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
