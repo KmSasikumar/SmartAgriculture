@@ -1,91 +1,49 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>SAMS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
-<style>
-        /* Mobile responsiveness (owner mobile pass, 2026-10-23) */
-        @media (max-width: 640px) {
-            form.border {
-                max-width: 94% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            .form-control {
-                min-height: 44px;
-            }
-
-            .btn {
-                min-height: 44px;
-                }
-        }
-      </style>
-
-  </head>
-  <body>
-    <div class = "container">
-    <form class = "border py-2 px-2 rounded border-dark" style="max-width:50%; margin-top:3rem ;margin-left:26%" method="post" action="">
-        {% csrf_token %}
-        <p class="h1 text-center"><u>Smart Agriculture main</u></p>
-        {% if error %}<p class="alert alert-danger text-center" role="alert">{{ error }}</p>{% endif %}
-        {% comment %} <p class="h6 text-center">(login Here)</p> {% endcomment %}
-        <div class="row">
-            <div class="col-6">
-                <div class="mb-3">
-                    <span class="material-icons-outlined "style="display: inline">badge</span>
-                    <input type="text" class="form-control border border-dark-subtle" id="exampleInputEmail1" name = "fname" placeholder="First Name"aria-describedby="emailHelp" required>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <span class="material-icons-outlined "style="display: inline">badge</span>
-                    <input type="text" class="form-control border border-dark-subtle" placeholder="Last name" name = "lname" id="exampleInputPassword1" required>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="mb-3">
-                    <span class="material-icons-outlined">account_circle</span>
-                    <input type="text" class="form-control border border-dark-subtle" placeholder="Username" name = "username" id="exampleInputPassword1" required>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="mb-3">
-                    <span class="material-icons-outlined "style="display: inline">email</span>
-                    <input type="mail" class="form-control border border-dark-subtle" placeholder="Email" name = "mail" id="exampleInputPassword1" required>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <span class="material-icons-outlined "style="display: inline">lock</span>
-                    <input type="Password" class="form-control border border-dark-subtle" placeholder="Password" name = "password" id="exampleInputPassword1" required>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <span class="material-icons-outlined "style="display: inline">lock</span>
-                    <input type="Password" class="form-control border border-dark-subtle" placeholder="Confirm Password" name = "confirmpassword" id="exampleInputPassword1" required>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="mb-3 form-check mx-6">
-                    <input type="checkbox" class="form-check-input " id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Agree Terms and Conditions</label>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark" name = "signin">Sign In</button>
-                    {% comment %} <button type="submit" class="btn btn-dark" name = "login">Log In</button>  {% endcomment %}
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
             </div>
         </div>
-            
-      </form>
-    </div>
-  </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  </body>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'sign' %}">Sign in</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Smart Agriculture Management System</h1>
+            {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="First Name" required>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <label for="mail">Email</label>
+                <input type="email" id="mail" name="mail" placeholder="Email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required>
+                <label><input type="checkbox" id="terms"> Agree Terms and Conditions</label>
+                <button type="submit" class="btn" name="signin">Sign In</button>
+            </form>
+        </div>
+    </main>
+</body>
 </html>
