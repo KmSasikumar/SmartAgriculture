@@ -17,12 +17,16 @@
             </div>
         </div>
         <nav class="main-nav">
-            <a href="{% url 'sign' %}">Sign in</a>
             <a href="{% url 'finance' %}">Calculator</a>
             <a href="{% url 'cropyeild' %}">Yield</a>
             <a href="{% url 'production' %}">Production</a>
             <a href="{% url 'soil_classification' %}">Soil</a>
+            {% if user.is_authenticated %}
+            <span class="nav-user">Hi, {{ user.first_name|default:user.username }}</span>
             <a href="{% url 'signout' %}">Log out</a>
+            {% else %}
+            <a href="{% url 'sign' %}">Sign in</a>
+            {% endif %}
         </nav>
     </header>
 
