@@ -1,5 +1,19 @@
 
 # Smart Agriculture Management System (SAMS)
+## Live demo
+
+**Live demo:** https://smart-agriculture-sasi.onrender.com
+
+Hosted on Render's free tier (Singapore region) from the main branch. The service sleeps when idle, so the first visit after a while may take up to a minute to wake.
+
+**Demo note:** The app runs on the SQLite database shipped in the repo, so accounts or data created on the live demo do not persist across restarts/redeploys.
+
+**Deployment notes:**
+
+- Build command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate --noinput`
+- Start command: `gunicorn smart_agriculture.wsgi:application --bind 0.0.0.0:$PORT`
+- Static files are served via WhiteNoise.
+- Configuration via the `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, and `DJANGO_SECRET_KEY` environment variables.
 
 **Empowering Farmers with Data-Driven Decisions and AI Analysis**
 
