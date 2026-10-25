@@ -4,46 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Production Calculator</title>
-    <link rel="stylesheet" href={%static "production.css"%}>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
+    <title>Crop Production Calculator | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Crop Production Calculator</h1>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
     </header>
-    <main>
-        <section class="calculator-form">
-            <h2>Calculate Crop Production</h2>
-            <form id="crop-production-calculator"  method = "post">
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Crop Production Calculator</h1>
+            <form id="crop-production-calculator" method="post">
                 {% csrf_token %}
-                <label for="crop-name">Crop Name:</label>
-                <input type="text" id="crop-name" name = "crop_name" required>
-                <label for="land-area">Land Area (acres):</label>
-                <input type="number" id="land-area" name = "land_acer" required>
-                <label for="crop-yield">Crop Yield (kg/acre):</label>
-                <input type="number" id="crop-yield" name = "crop-yield" required>
-                <label for="input-cost">Input Cost ($/acre):</label>
-                <input type="number" id="input-cost" name = "user_cost" required>
-                <label for="market-price">Market Price ($/kg):</label>
-                <input type="number" id="market-price" name = "market_price" required>
-                <button type="submit">Calculate</button>
+                <label for="crop-name">Crop Name</label>
+                <input type="text" id="crop-name" name="crop_name" required>
+                <label for="land-area">Land Area (acres)</label>
+                <input type="number" id="land-area" name="land_acer" step="any" required>
+                <label for="crop-yield">Crop Yield (kg/acre)</label>
+                <input type="number" id="crop-yield" name="crop-yield" step="any" required>
+                <label for="input-cost">Input Cost ($/acre)</label>
+                <input type="number" id="input-cost" name="user_cost" step="any" required>
+                <label for="market-price">Market Price ($/kg)</label>
+                <input type="number" id="market-price" name="market_price" step="any" required>
+                <button type="submit" class="btn">Calculate</button>
             </form>
             {% if error != "" %}
-            <p id="production-error">{{error}}</p>
+            <p class="error" id="production-error">{{ error }}</p>
             {% endif %}
             {% if name != "" %}
-            <p id="production-result">Crop:{{name}} <br>
-                Total Production: {{production}} kg<br>
-                Total Revenue:{{Revenue}} <br>
-                Total Cost: {{cost}}<br>
-                Profit: {{profit}}</p>
+            <p class="result" id="production-result">Crop: {{ name }}<br>
+                Total Production: {{ production }} kg<br>
+                Total Revenue: {{ Revenue }}<br>
+                Total Cost: {{ cost }}<br>
+                Profit: {{ profit }}</p>
             {% endif %}
-        </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2023 Crop Production Calculator</p>
-    </footer>
-    {% comment %} <script src="{% static "script1.js" %}"></script> {% endcomment %}
 </body>
 </html>
