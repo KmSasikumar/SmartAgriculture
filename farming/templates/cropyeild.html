@@ -2,32 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Crop Yield Calculator</title>
-    <link rel="stylesheet" href={% static 'Style.css' %}>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Calculator | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Crop Yield Calculator</h1>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
     </header>
-    <main>
-        <section class="crop-form">
-            <h2>Calculate Crop Yield</h2>
-            <form id="crop-yield-calculator" method = "post">
+
+    <main class="page">
+        <div class="form-card">
+            <h1>Crop Yield Calculator</h1>
+            <form id="crop-yield-calculator" method="post">
                 {% csrf_token %}
-                <label for="crop-weight">Weight of Crop (kg):</label>
-                <input type="number" id="crop-weight" name = "weight" required>
-                <label for="land-area">Land Area (acres):</label>
-                <input type="number" id="land-area" name = "area" required>
-                <button type="submit">Calculate</button>
+                <label for="crop-weight">Weight of Crop (kg)</label>
+                <input type="number" id="crop-weight" name="weight" step="any" required>
+                <label for="land-area">Land Area (acres)</label>
+                <input type="number" id="land-area" name="area" step="any" required>
+                <button type="submit" class="btn">Calculate</button>
             </form>
-            <p id="yield-result" name = "yield-result">{{ans}}</p>
-        </section>
+            {% if ans %}<p class="result" id="yield-result">{{ ans }}</p>{% endif %}
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2023 Crop Yield Calculator</p>
-    </footer>
-    {% comment %} <script src="{% static 'yeildcalculator.js' %}" ></script> {% endcomment %}
 </body>
 </html>
