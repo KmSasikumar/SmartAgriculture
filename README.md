@@ -7,6 +7,7 @@
 Hosted on Render's free tier (Singapore region) from the main branch. The service sleeps when idle, so the first visit after a while may take up to a minute to wake.
 
 **Demo note:** The app runs on the SQLite database shipped in the repo, so accounts or data created on the live demo do not persist across restarts/redeploys.
+Demo login — Username: demo, Password: demo1234 (re-created automatically on every deploy).
 
 **Deployment notes:**
 
