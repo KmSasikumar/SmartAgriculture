@@ -1,0 +1,302 @@
+/* ui.css — modern design layer for Smart Agriculture Management System.
+   Loaded AFTER the legacy stylesheets, so it refines (never rewrites) the
+   layout: same pages, same structure, same purple identity — cleaned up to
+   a current look: soft surfaces, rounded cards, clear hierarchy, generous
+   spacing, and the mobile fixes from the 2026-10-23 pass kept intact.
+   Owner order 2026-10-26: enhance the UI of every page, latest style. */
+
+:root {
+    --brand: #7e57c2;
+    --brand-deep: #5e35b1;
+    --brand-soft: #ede7f6;
+    --brand-pale: #f6f3fc;
+    --accent: #2e7d32;
+    --accent-soft: #e8f5e9;
+    --ink: #232036;
+    --muted: #6b7280;
+    --surface: #ffffff;
+    --line: #e7e1f3;
+    --shadow-sm: 0 1px 2px rgba(35, 32, 54, 0.06), 0 2px 8px rgba(35, 32, 54, 0.06);
+    --shadow-md: 0 8px 24px rgba(35, 32, 54, 0.10);
+    --radius: 18px;
+    --radius-sm: 12px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    background: var(--brand-pale);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--brand-deep);
+}
+
+img {
+    border-radius: 14px;
+}
+
+h1,
+h2,
+h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+/* ---- Header / navigation (keeps the purple identity) ---- */
+.navbar {
+    background: linear-gradient(90deg, #6d28d9, var(--brand) 55%, #a06cd5);
+    box-shadow: 0 2px 12px rgba(94, 53, 177, 0.35);
+}
+
+.nav-search a,
+.signin a,
+.calculator a,
+.calculator2 a,
+.calculator3 a {
+    color: #ffffff;
+    font-size: 1.1rem !important;
+    border: none;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-search a:hover,
+.signin a:hover,
+.calculator a:hover,
+.calculator2 a:hover,
+.calculator3 a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---- Hero strip ---- */
+.background-msg {
+    background: linear-gradient(180deg, #efe9fb, #ffffff);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem 1rem;
+    margin: 1rem;
+}
+
+.background-msg p {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.background-msg a {
+    font-weight: 600;
+}
+
+/* ---- Cards (home articles + government-scheme boxes) ---- */
+.box,
+.articles {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    height: auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* The home page defines .box/.articles in a body-level <style> block, which
+   beats plain external rules at equal specificity — so these overrides use
+   a more specific selector to win regardless of order. */
+.abox .articles,
+.box-section .box {
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+/* One clean lift on the card itself; the legacy rule lifted every hovered
+   descendant (links included), which made inner elements jump. */
+.abox .articles:hover,
+.box-section .box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.box-section .box *:hover,
+.abox .articles *:hover {
+    transform: none;
+}
+
+.box-content h2,
+.articles h2 {
+    color: var(--ink);
+}
+
+.box-content a,
+.articles a {
+    font-weight: 600;
+}
+
+.img1,
+.img2,
+.img3,
+.article1,
+.article2,
+.article3 {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* ---- Section headings ---- */
+.h21 h2 {
+    color: var(--ink);
+}
+
+/* ---- Forms (calculator / finance / crop pages + sign-in) ---- */
+.calculator-form,
+.crop-form {
+    background: var(--surface);
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+}
+
+.calculator-form h1,
+.calculator-form h2,
+.crop-form h1,
+.crop-form h2 {
+    background: none !important;
+    color: var(--ink);
+    font-style: normal;
+    font-family: inherit;
+}
+
+.calculator-form label,
+.crop-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+}
+
+.calculator-form input[type="text"],
+.calculator-form input[type="number"],
+.calculator-form input[type="email"],
+.calculator-form input[type="password"],
+.calculator-form select,
+.crop-form input[type="text"],
+.crop-form input[type="number"],
+.crop-form input[type="email"],
+.crop-form input[type="password"],
+.crop-form select,
+#signin-form input,
+.form-control {
+    box-sizing: border-box;
+    border: 1.5px solid #ddd5ef;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.9rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calculator-form input:focus,
+.crop-form input:focus,
+#signin-form input:focus,
+.form-control:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.18);
+    outline: none;
+}
+
+.calculator-form button[type="submit"],
+#signin-form button,
+#signin-form a.btn,
+.btn {
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.calculator-form button[type="submit"],
+.crop-form button[type="submit"] {
+    background: linear-gradient(90deg, var(--brand-deep), var(--brand));
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.75rem;
+}
+
+.calculator-form button[type="submit"]:hover,
+.crop-form button[type="submit"]:hover,
+#signin-form button:hover,
+#signin-form a.btn:hover,
+.btn:hover {
+    filter: brightness(1.08);
+}
+
+/* Bare buttons (soil-classification page) get the brand treatment. */
+button:not([class]) {
+    background: linear-gradient(90deg, var(--brand-deep), var(--brand));
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+button:not([class]):hover {
+    filter: brightness(1.08);
+}
+
+/* ---- Sign-in card ---- */
+#signin-form {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    max-width: 420px;
+    margin: 2rem auto;
+}
+
+/* ---- Soil pages ---- */
+#label-container {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+#loaded-image {
+    box-shadow: var(--shadow-md);
+}
+
+/* ---- Footer ---- */
+.foot {
+    background: #241f33;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 1.25rem 1rem;
+}
+
+.foot a {
+    color: #d8ccf5;
+}
+
+/* ---- Mobile: keep the 2026-10-23 stacking, soften card spacing ---- */
+@media (max-width: 640px) {
+    .box,
+    .articles {
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .calculator-form,
+    .crop-form {
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 1.25rem;
+    }
+}
