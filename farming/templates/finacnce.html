@@ -4,33 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Calculator</title>
-    <link rel="stylesheet" href={%static 'Style.css'%}>
-    <link rel="stylesheet" href={% static 'ui.css' %}>
+    <title>Financial Calculator | SAMS</title>
+    <link rel="stylesheet" href="{% static 'app.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Financial Calculator</h1>
+    <header class="site-header">
+        <div class="brand">
+            <img src="{% static 'SAMSlogo.png' %}" alt="SAMS logo">
+            <div>
+                <div class="brand-name">SAMS</div>
+                <div class="brand-sub">Smart Agriculture Management System</div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="{% url 'finance' %}">Calculator</a>
+            <a href="{% url 'cropyeild' %}">Yield</a>
+            <a href="{% url 'production' %}">Production</a>
+            <a href="{% url 'soil_classification' %}">Soil</a>
+            <a href="{% url 'signout' %}">Log out</a>
+        </nav>
     </header>
-    <main>
-        <section class="calculator-form">
+
+    <main class="page">
+        <div class="form-card">
             <h1>Loan Calculator</h1>
             <form id="loan-calculator">
                 {% csrf_token %}
-                <label for="loan-amount">Loan Amount (Rs):</label>
-                <input type="number" id="loan-amount" name = "loan-amount" required>
-                <label for="loan-term">Loan Term (years):</label>
-                <input type="number" id="loan-term" name = "loan-term" required>
-                <label for="annual-interest-rate">Annual Interest Rate (%):</label>
-                <input type="number" id="annual-interest-rate" name = "annual-interest-rate" required>
-                <button type="submit">Calculate</button>
+                <label for="loan-amount">Loan Amount (Rs)</label>
+                <input type="number" id="loan-amount" name="loan-amount" step="any" required>
+                <label for="loan-term">Loan Term (years)</label>
+                <input type="number" id="loan-term" name="loan-term" step="any" required>
+                <label for="annual-interest-rate">Annual Interest Rate (%)</label>
+                <input type="number" id="annual-interest-rate" name="annual-interest-rate" step="any" required>
+                <button type="submit" class="btn">Calculate</button>
             </form>
-            <p id="monthly-payment">Monthly Payment: Rs {{amount}}</p>
-        </section>
+            <p class="result" id="monthly-payment">Monthly Payment: Rs {{ amount }}</p>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2023 Financial Calculator</p>
-    </footer>
-    <script src = {% static "loanCalculator.js" %}></script>
+    <script src="{% static 'loanCalculator.js' %}"></script>
 </body>
 </html>
